@@ -1,0 +1,17 @@
+version: '3'
+
+services:
+  swoole:
+    build: ./
+    image: php/swoole
+    container_name: swoole
+    ports:
+      - "9501:9501"
+    volumes:
+      - ./:/var/www/code
+    stdin_open: true
+    tty: true
+    privileged: true
+    entrypoint: ["php", "/var/www/code/server", "start"]
+
+#    docker exec swoole bash -c "ps -ef|grep swoole"
